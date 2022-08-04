@@ -14,7 +14,7 @@ jobs:
    runs-on: ubuntu-latest
    steps:
     - name: eccho a string
-      run: eccho "hello-world"
+      run: echo "hello-world"
 
       # we can do any action or run any shell command
     - name: muultilne script

@@ -1,0 +1,18 @@
+ssh-keygen -t rsa -b 4096 -C "akudemyraj@gmail.com"
+ssh-add -K ~/.ssh/id_rsa
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+make a new repo (with branch main)
+add deploy key
+
+
+git init
+git remote add origin git@github.com:akan-ksha/github-actions-test.git
+git remote -v
+
+make a folder ./github/workflows/simple.yml
+
+git add -A
+git commit -m "."
+git push
+git push --set-upstream origin master

@@ -13,7 +13,7 @@ jobs:
   run-shell-command:
    runs-on: ubuntu-latest
    steps:
-    - name: echo a string
+    - name: eccho a string
       run: echo "hello-world"
 
       # we can do any action or run any shell command
@@ -21,6 +21,8 @@ jobs:
       run: |
         node -v
         npm -v
+
+  
 
 
       

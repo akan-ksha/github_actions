@@ -26,3 +26,8 @@ jobs:
 
 
       
+
+# // needs kry of a job 
+# needs value will be array of jobs that needs o be done beforeperforming this job
+
+

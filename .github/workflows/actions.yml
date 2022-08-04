@@ -1,0 +1,33 @@
+
+name: actions workflow
+
+
+
+on: [push]
+
+jobs:
+  run-gtihub-actions:
+   runs-on: ubuntu-latest
+   steps:
+    - name: simple js action 
+      id: greet
+      uses: actions/hello-world-javascript-action@v1
+      with: 
+        what-to-greet: John
+    - name: log greeting time
+      run: echo "${{steps.greet.outputs.time}}"
+
+
+# uses will take a reference to an action 
+# we can use action of subfolder or dir writing its path as value of uses
+#or we can use an action  that is published in github
+
+
+# and using with=> we provide inputs 
+#
+
+#and we can assign id to any step 
+
+
+
+

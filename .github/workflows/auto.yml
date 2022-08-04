@@ -8,13 +8,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: conventional Changelog Action
+      # - name: conventional Changelog Action
+      #   id: changelog
+      #   uses: TriPSs/conventional-changelog-action@v3
+      #   with:
+      #     github-token: ${{ secrets.GITHUB_TOKEN }}
+      #     version-file: './package.json,./package-lock.json'
+      - name: "Build Changelog"
         id: changelog
-        uses: TriPSs/conventional-changelog-action@v3
-        with:
-          github-token: ${{ secrets.CHANGELOG_RELEASE }}
-          version-file: './package.json,./package-lock.json'
-
+        uses: mikepenz/release-changelog-builder-action@{latest-release}
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: create release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}

@@ -30,33 +30,49 @@
 #           body: ${{ steps.changelog.outputs.clean_changelog }}
 
 
+# name: Releases
+# on: push
+
+# jobs:
+#   changelog:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: eccho a string
+#         run: echo ${{ secrets.GUTHUB_TOKEN }}
+#       - uses: actions/checkout@v2
+
+#       - name: conventional Changelog Action
+#         id: changelog
+#         uses: TriPSs/conventional-changelog-action@v3.7.1
+#         with:
+#           github-token: ${{ secrets.CHANGELOG_RELEASE }}
+#           version-file: './package.json,./package-lock.json'
+
+      
+
+#       - name: create release
+#         uses: actions/create-release@v1
+#         if: ${{ steps.changelog.outputs.skipped == 'false' }}
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.CHANGELOG_RELEASE }}
+#         with:
+#           tag_name: ${{ steps.changelog.outputs.tag }}
+#           release_name: ${{ steps.changelog.outputs.tag }}
+#           body: ${{ steps.changelog.outputs.clean_changelog }}
+
+
 name: Releases
 on: push
 
 jobs:
   changelog:
+    name: create release
     runs-on: ubuntu-latest
-
     steps:
-      - name: eccho a string
-        run: echo ${{secrets.GUTHUB_TOKEN}}
-      - uses: actions/checkout@v2
-
-      - name: conventional Changelog Action
-        id: changelog
-        uses: TriPSs/conventional-changelog-action@v3.7.1
-        with:
-          github-token: ${{ secrets.CHANGELOG_RELEASE }}
-          version-file: './package.json,./package-lock.json'
-
-      
-
-      - name: create release
-        uses: actions/create-release@v1
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Create Release
+        run: gh release create ${{ github.ref }} --generate-notes
         env:
-          GITHUB_TOKEN: ${{ secrets.CHANGELOG_RELEASE }}
-        with:
-          tag_name: ${{ steps.changelog.outputs.tag }}
-          release_name: ${{ steps.changelog.outputs.tag }}
-          body: ${{ steps.changelog.outputs.clean_changelog }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

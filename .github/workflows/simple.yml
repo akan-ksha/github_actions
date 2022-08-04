@@ -1,0 +1,26 @@
+# this is the name of the entire workflow
+name: shell commands
+
+#now define the events that will trigger this workflow
+#now, mention an event or array of events
+
+# on: [push, pull_request]
+on: [push]
+
+#now define our jobs
+
+jobs:
+  run-shell-command:
+   runs-on: ubuntu-latest
+   steps:
+    - name: echo a string
+      run: echo "hello-world"
+
+      # we can do any action or run any shell command
+    - name: muultilne script
+      run: |
+        node -v
+        npm -v
+
+
+      

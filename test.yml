@@ -1,0 +1,34 @@
+name: Ali
+age: 28
+
+
+# this is => values as object
+key:
+  key: value
+  key2: 33
+
+
+# arary having element as object s
+array: 
+  - a: 1
+  - b: 2
+    c: 3
+    
+# array having elements
+arr2:
+  - a
+  - b
+
+
+# long text without any new lines 
+
+longtext: >
+  hello
+  bello
+
+# long text with any new lines 
+longtex_t: |
+  hello
+  bello
+
+

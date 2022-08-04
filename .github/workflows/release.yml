@@ -1,0 +1,21 @@
+# A Release is created from an existing tag
+name: git release
+
+# // matlab kya krne pe ye workflow run on
+#these vent strigger workflows:
+  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+
+on: push
+jobs:
+  release-project: 
+    name: release_projects
+    runs-on: ubuntu-latest
+    steps:
+      - name: create github release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          tag_name: "ak"
+          release_name: "Agent_logsv0.1"
+

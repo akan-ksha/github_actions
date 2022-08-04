@@ -9,11 +9,10 @@ jobs:
     - name : list-files
       run: |
         pwd
-        ls 
+        ls -a
     - name: checkout 
       uses: actions/checkout@v1
     - name:  list-after-checkout
       run: | 
         pwd
         ls -a 
-        

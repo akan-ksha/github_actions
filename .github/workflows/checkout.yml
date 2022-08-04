@@ -1,0 +1,19 @@
+name: checkout workflow
+
+on : [push]
+
+jobs:
+  use-checkout:
+   runs-on : ubuntu-latest
+   steps:
+    - name : list-files
+      run: |
+        pwd
+        ls 
+    - name: checkout 
+      uses: actions/checkout@v1
+    - name:  list-after-checkout
+      run: | 
+        pwd
+        ls -a 
+        

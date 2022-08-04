@@ -39,7 +39,7 @@ jobs:
 
     steps:
       - name: eccho a string
-        run: echo ${{ secrets.GUTHUB_TOKEN }}
+        run: echo ${{secrets.GUTHUB_TOKEN}}
       - uses: actions/checkout@v2
 
       - name: conventional Changelog Action
